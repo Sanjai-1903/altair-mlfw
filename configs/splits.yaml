@@ -1,0 +1,13 @@
+# How we split the data into train / val / test  (task A5, phase P1)
+# ------------------------------------------------------------------
+# THE RULE (spec rule #2, no data leakage):
+#   Split by WHOLE trial FIRST, then make windows.
+#   The test set is opened exactly ONCE, at the very end.
+
+seed: 7                 # fixed seed -> same split every run (determinism)
+split_by: trial_id      # a trial is never put on two sides at once
+
+ratios:
+  train: 0.6
+  val: 0.2
+  test: 0.2

@@ -1,0 +1,5 @@
+# SNN search space  (tasks B1/B2, phase P3)  -- NOT STARTED
+# ---------------------------------------------------------
+# Placeholder only. Do NOT fill neuron counts or timesteps until
+# baselines exist and the SNN is justified vs a matched baseline (Gate G3).
+status: not_started

@@ -1,0 +1,17 @@
+# Spec rule: NEVER commit raw or proprietary telemetry.
+data/raw/
+
+# Synthetic / processed data is regenerable (python3 run_pipeline.py --regen)
+data/processed/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Leftover from the starter-zip extraction (safe to delete)
+ALTair-starter/
+ALTair-starter.zip
+
+# Generated synthetic run outputs (regenerable; not real results)
+experiments/reports/
+experiments/index.csv

@@ -1,0 +1,44 @@
+# ALTair dataset contract  (tasks A3/A4, phase P1)
+# -------------------------------------------------
+# This file says WHAT the data looks like and WHAT the label means.
+# It is read by the pipeline. Keep it honest.
+#
+# SYNTHETIC MODE is on until the real RoSE-Lab data passes Gate G0.
+# When real data is in hand, change `source` to rose_lab and point
+# `processed_dir` at the real Processed_Data.csv files.
+
+source: synthetic            # synthetic | rose_lab
+banner: "SYNTHETIC DATA - NOT FOR ANY ACCURACY, TOPOLOGY OR QUANT CLAIM"
+
+processed_dir: data/processed
+sample_rate_hz: 50
+
+# The column that holds time (seconds from start of the trial).
+time_column: time_s
+
+# The signals we feed the model. These names match the real RoSE-Lab
+# Processed_Data.csv schema (motor current + wheel speed + IMU).
+feature_columns:
+  - current1
+  - current2
+  - current3
+  - current4
+  - vel1_rad_s
+  - vel2_rad_s
+  - vel3_rad_s
+  - vel4_rad_s
+  - ang_vel_x
+  - ang_vel_y
+  - ang_vel_z
+  - lin_acc_x
+  - lin_acc_y
+  - lin_acc_z
+
+# One TRIAL = one recording = one group. Splits never cut a trial in half.
+group_key: trial_id
+# config_id = the experimental setting (speed_radius_direction_inclination)
+config_key: config_id
+
+# The label. BE HONEST about what it is.
+label_column: is_off_nominal
+label_meaning: "off-nominal MOBILITY event (synthetic). This is NOT a mechanical motor fault."
